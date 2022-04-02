@@ -1,0 +1,14 @@
+Analyzer
+connect to reverb.
+- when reverb connects to audioCTX 
+- update canvas with changing analyser data 
+  - when reverb changes 
+  - when some effect changes 
+  - values = getValues for the changes 
+    - find a value that is consistantly up and down 
+- clear canvas onWillUpadate
+- getAnimationFrames
+- bring in library for animations ( p5 ) or ( d3 ) 
+
+disconnect 
+- when reverb disconnects

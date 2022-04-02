@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import * as Tone from 'tone';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+// import * as p5 from 'p5';
+// import { useEffect } from 'react';
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 
 // const meter = new Tone.Meter();
@@ -21,50 +23,53 @@ const reverb = new Tone.Reverb(
 
 // const crusher = new Tone.BitCrusher(4).toDestination();
 const recorder = new Tone.Recorder();
+const analyser = new Tone.Analyser('waveform', 1024);
+
 // recorder.connect(pingPong)
 const actxTone = new Tone.UserMedia().connect(recorder);
+// let amplitudes = 0
 
-
+function _connectAnalyzer() {
+  
+  
+  analyser.toDestination()
+//   //   // Create a new list of amplitudes filled with 0s
+    
+    
+    // for(let i = 0; i < amplitudes.length; i++) {
+    //   amplitudes[i] = i
+    // }
+    // if(reverb) {
+    //   reverb.connect(analyser)
+    // }
+    // amplitudes = new Array(analyser.size).fill(0);
+    const values = analyser.getValue();
+    // console.log('analyzer::', amplitudes)
+    console.log('values::', values)
+//   //   // Connect with analyser as well so we can detect waveform
+//   //   player.connect(analyser);
+}
 function _connectReverb() {
   reverb.connect(recorder)
+  // reverb.connect(analyser)
   actxTone.connect(reverb);
+  actxTone.connect(analyser)
   reverb.toDestination()
 }
-
 function _disconnectReverb() {
   actxTone.disconnect(reverb);
+  actxTone.disconnect(analyser)
+
 }
-
-
-// pingPong.connect(actxTone);
-
 function _connectPingPong() {
   pingPong.connect(recorder)
   actxTone.connect(pingPong)
   pingPong.toDestination();
-
-
-  // _setPingPongRate()
 }
-
 function _disconnectPingPong() {
   actxTone.disconnect(pingPong)
 }
-// const [amt, setAmt] = useState('')
-// function _setPingPongRate(amt = 24) {
-//   const dt = pingPong.delayTime
-//   console.log('dt::', dt['value'] = amt)
 
-// }
-// pingPong
-// const actx = Tone.context;
-// const dest = actx.createMediaStreamDestination();
-// const audioStremaRecorder = new MediaRecorder(dest.stream)
-
-
-// mic.connect(crusher)
-
-// const synthSynth = new Tone.Synth().connect(recorder);
 actxTone.open().then(() => {
   // promise resolves when input is available
   console.log("mic open");
@@ -77,7 +82,7 @@ actxTone.open().then(() => {
 
 const synth = new Tone.MembraneSynth().toDestination();
 
-async function stopRecording() {
+async function _stopRecording() {
   const recording = await recorder.stop();
   // download the recording by creating an anchor element and blob url
   const url = URL.createObjectURL(recording);
@@ -87,10 +92,19 @@ async function stopRecording() {
   anchor.click();
 }
 
-function startRecording() {
+function _startRecording() {
   recorder.start()
   synth.triggerAttackRelease("C2", "16n");
 }
+
+// function AnalyzerRate(props) {
+//   if (props.width && props.height) {
+//     let asize = analyser.getValue()
+//     console.log('anal size::', asize)
+//     return analyser.size.toFixed(1.2)
+//   }
+//   return 1.9
+// }
 
 
 function ReverbDelayRate(props) {
@@ -100,87 +114,131 @@ function ReverbDelayRate(props) {
   return 1.9
 }
 
-function PingPongDelayRate(props) {
-  if (props.delayRate) {
-    // const dt = pingPong.delayTime.value
-    pingPong.delayTime.value = props.delayRate
-    return <p>{props.delayRate}</p>
-  }
-  return pingPong.delayTime.value
-}
-
-// function App() {
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { dt: 18, rdr: 1.9 }
-  }
-
-  handleReverbChange = e => this.setState({ rdr: e.target.value })
-  handlPingPongChange = e => this.setState({ dt: e.target.value })
-
-  render() {
-    const dt = this.state.dt
-    const rdr = this.state.rdr
-    return (
-
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div id='wrapper'>
-            <PingPongDelayRate
-              delayRate={dt} />
-            <ReverbDelayRate
-              decay={rdr} />
-
-            <button id='button' onClick={startRecording}>record</button>
-            <button id='button-stop' onClick={stopRecording}>stop</button>
-
-            <button id='button-stop' onClick={_connectPingPong}>ping--pong</button>
-            <button id='button-stop' onClick={_disconnectPingPong}>stop--pong</button>
-
-            <button id='button-stop' onClick={_connectReverb}>reverb</button>
-            <button id='button-stop' onClick={_disconnectReverb}>stop--reverb</button>
-            {/* <button id='button-stop' onClick={_setPingPongRate}>delay--pong</button> */}
-
-            {/* <input value={dt} onChange={this.handlPingPongChange} /> */}
-
-            <input type="range" in="1" max="100" value={rdr}
-              class="slider" id="myRange"
-              onChange={this.handleReverbChange} /> 
-          </div>
-        </header>
-
-      </div>
-    );
-  }
-}
-
-// class Clock extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>Hello, world!</h1>
-//         <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
-//       </div>
-//     );
+// function PingPongDelayRate(props) {
+//   if (props.delayRate) {
+//     // const dt = pingPong.delayTime.value
+//     pingPong.delayTime.value = props.delayRate
+//     return <p>{props.delayRate}</p>
 //   }
+//   return pingPong.delayTime.value
 // }
 
-// function tick() {
-//   ReactDOM.render(
-//     <Clock date={new Date()} />,
-//     document.getElementById('root')
-//   );
-// }
 
-// setInterval(tick, 1000);
+const App = () => {
+  const [getReverbDelayRate, setReverbDelayRate] = useState('')
+  const reverbDelayRateHandler = e => setReverbDelayRate(e.target.value)
 
-// const ele = <App name="PlugNPlay" />;
+  const [getArcInput, setArcInput] = useState({
+    arc1: 490,
+    arc2: 250,
+    arc3: 20,
+    arc4: 0,
+    arc5: 2 * Math.PI
+  })
 
-// ReactDOM.render(
-//   ele,
-//   document.getElementById('root')
-// )
+  let ca =((analyser.getValue()[0]) *  -10)
+  let caRef = useRef(ca)
+
+  const foo = () => {
+    if(Math.sign(ca) === -0 || Math.sign(ca) === -1) {
+      console.log('negative')
+      ca = ca * -10000
+    }
+    // console.log('analyzer values::', ca)
+  }
+  // caRef.current = 
+  foo()
+  //arc3 = anaylyzer.getValue()[0] * Math.random
+
+  
+  
+  // const handlPingPongChange = e => this.setState({ dt: e.target.value })
+  // const handleAnalyzerChange = e => this.setState({width: e.target.value, height: e.target.value})
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    ctx.beginPath();
+    ctx.arc(getArcInput.arc1, getArcInput.arc2, getArcInput.arc3, getArcInput.arc4, getArcInput.arc5);
+    console.log('arc::', getArcInput.arc1)
+    ctx.stroke();
+    // canvas.addEventListener('mouseup', e => {
+    //   console.log('event::', e)
+    // })
+    _connectAnalyzer()
+    // const arcInputHandler = e => {
+    //   // if(Math.sign(ca) === -0 || Math.sign(ca) === -1) {
+    //   //   console.log('negative')
+    //   //   ca = foo()
+    //   // }
+    //   console.log('ca::', ca)
+    // }
+
+      setArcInput({ 
+        ...getArcInput,
+        // arc1: e.target.value,
+        // arc2: e.target.value,
+        // arc3: e.target.value,
+        arc3: ca
+    
+        // arc4: e.target.value,
+        // arc5: e.target.value,
+       })
+    
+    
+  }, [ ca,caRef, getArcInput])
+
+
+  return (
+    <div className="App">
+       
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <div id='wrapper'>
+          {/* <PingPongDelayRate
+            delayRate={delayRate} /> */}
+          <ReverbDelayRate
+            decay={getReverbDelayRate} />
+          
+          {/* <AnalyzerRate
+            width={width}
+            height={height} /> */}
+
+          {/* TODO  Tone controls ui component  */}
+          <button id='button' onClick={_startRecording}>record</button>
+          <button id='button-stop' onClick={_stopRecording}>stop</button>
+
+          <button id='button-stop' onClick={_connectPingPong}>ping--pong</button>
+          <button id='button-stop' onClick={_disconnectPingPong}>stop--pong</button>
+
+          <button id='button-stop' onClick={_connectReverb}>reverb</button>
+          <button id='button-stop' onClick={_disconnectReverb}>stop--reverb</button>
+          {/* <button id='button-stop' onClick={_setPingPongRate}>delay--pong</button> */}
+
+          {/* <input value={dt} onChange={this.handlPingPongChange} /> */}
+
+          <input type="range" min="1" max="100" value={getReverbDelayRate}
+            className="slider" id="myRange"
+            onChange={reverbDelayRateHandler} /> 
+
+           <input type="range" min="0" max="100" 
+            className="anal" id="myAnal"
+            // onChange={arcInputHandler}
+             /> 
+<br></br>
+          <canvas 
+          ref={canvasRef}
+          width={1000}
+          height={500}
+          className='c'>
+          </canvas>
+        </div>
+      </header>
+ 
+    </div>
+  );
+}
 
 export default App;
