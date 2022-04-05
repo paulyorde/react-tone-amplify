@@ -32,8 +32,7 @@ function _connectReverb(actx, record) {
   }
 }
 
-  const _setReverbDecayRate = e => this.setState({ rdr: e.target.value })
-   
+const _setReverbDecayRate = e => this.setState({ rdr: e.target.value })
 
 /** Reverb Component
  * param decay
