@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { IoRadioButtonOn, IoStop } from "react-icons/io5";
+// import { IoRadioButtonOn, IoStop } from "react-icons/io5";
 import Player from '../player/player.component';
 import { useState } from 'react';
 
@@ -32,8 +32,8 @@ const Recorder = (props) => {
   return (
     <>
       <div>
-      <button id='button' onClick={_startRecording}>record<IoRadioButtonOn /></button>
-      <button id='button-stop' onClick={_stopRecording}>stop<IoStop /></button>
+      <button id='button' onClick={_startRecording}>record</button>
+      <button id='button-stop' onClick={_stopRecording}>stop</button>
       <Player 
           actxTone={actxTone}
           audioUrl={audioUrl}/>
