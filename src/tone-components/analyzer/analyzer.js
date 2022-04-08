@@ -1,14 +1,10 @@
 import React from "react";
 
-class Analyzer extends React.Component {
-  render() {
+const Analyzer = (props) => {
+
     return (
-      <div>
-        <h1>Analyzer</h1>
-       
-      </div>
+      <></>
     );
-  }
 }
 
 export default Analyzer
