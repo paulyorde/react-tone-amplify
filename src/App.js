@@ -2,9 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import * as Tone from 'tone';
 import React from 'react';
-import Reverb from './tone-components/effects/reverb/reverb.component';
-import PingPong from './tone-components/effects/pingpong/pingpont.component';
-import Recorder from './tone-components/recorder/recorder.component';
+// import Reverb from './tone-components/effects/reverb/reverb.component';
+// import PingPong from './tone-components/effects/pingpong/pingpont.component';
+// import Recorder from './tone-components/recorder/recorder.component';
+import Track from './tone-components/track/track.component';
 
 const recorder = new Tone.Recorder();
 const actxTone = new Tone.UserMedia().connect(recorder);
@@ -20,11 +21,11 @@ const App = () => {
   return (
     <>
     <div className="App">
-    <NumberList numbers={numbers} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Track />
         <div id='wrapper'>
-          <Recorder
+          {/* <Recorder
           recorder={recorder}
           actxTone={actxTone}/>
 
@@ -34,7 +35,7 @@ const App = () => {
           
          <Reverb
           actxTone={actxTone}
-          recorder={recorder}/>
+          recorder={recorder}/> */}
         </div>
       </header>
     </div>

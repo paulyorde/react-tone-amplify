@@ -6,7 +6,7 @@ const Player = (props) => {
 
   const player = new Tone.Player(audioU).toDestination();
   player.autostart = false;
-
+ 
   const _play = () => {
     player.start()
   }
