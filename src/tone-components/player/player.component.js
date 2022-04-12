@@ -17,8 +17,10 @@ const Player = (props) => {
 
   return (
     <>
+      <div>
       <button id='button' onClick={_play}>play</button>
       <button id='button-stop' onClick={_stop}>stop</button>
+      </div>
       <br></br>
     </>
   )
