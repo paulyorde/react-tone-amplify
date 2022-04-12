@@ -39,6 +39,7 @@ const Track = () => {
 
     return (
         <>
+            <div className="track">
             <Recorder
             audioCTX={fetchAudioURL}
             recorder={_recorder}
@@ -55,6 +56,7 @@ const Track = () => {
             <Reverb
             actxTone={_audioContext}
             recorder={_recorder}/>
+            </div>
         </>
 
             
