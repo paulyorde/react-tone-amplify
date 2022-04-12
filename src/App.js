@@ -23,19 +23,8 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Track />
         <div id='wrapper'>
-          {/* <Recorder
-          recorder={recorder}
-          actxTone={actxTone}/>
-
-         <PingPong
-          actxTone={actxTone}
-          recorder={recorder}/>
-          
-         <Reverb
-          actxTone={actxTone}
-          recorder={recorder}/> */}
+         <Track />
         </div>
       </header>
     </div>

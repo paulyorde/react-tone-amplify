@@ -1,25 +1,17 @@
 import * as Tone from 'tone';
 // import { IoRadioButtonOn, IoStop } from "react-icons/io5";
 // import Player from '../player/player.component';
-import {useState } from 'react';
-
-
 
 const Recorder = (props) => {
-
-  
  
-  const [audioUrl, setAudioUrl] = useState(null)
   const recorder = props.recorder;
   const actxTone = props.actxTone
   const audioURLOut = props.audioCTX
   const synth = new Tone.MembraneSynth().toDestination();
-  let url = null
 
   const _stopRecording = async () => {
     const recording = await recorder.stop();
-    url = URL.createObjectURL(recording);
-    setAudioUrl(url)
+    const url = URL.createObjectURL(recording);
     audioURLOut(url)
 
     // const anchor = document.createElement("a");

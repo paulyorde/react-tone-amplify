@@ -7,10 +7,14 @@ import PingPong from '../../tone-components/effects/pingpong/pingpont.component'
 
 const Track = () => {
 
-    const [aU, setAU] = useState(null)
+    const [_audioURL, set_audioURL] = useState(null)
    
-    const getAU = (audioU) => {
-        setAU(audioU)
+    /**
+     * 
+     * @param {fetch from Recorder onstop} audioU 
+     */
+    const fetchAudioURL = (audioU) => {
+        set_audioURL(audioU)
     }
     
     /**
@@ -20,39 +24,37 @@ const Track = () => {
         openAudioContext()
     },[]) 
 
-    const recorder = new Tone.Recorder();
-    const audioContext = new Tone.UserMedia()
+    const _recorder = new Tone.Recorder();
+    const _audioContext = new Tone.UserMedia()
 
     const openAudioContext = () => {
-        audioContext.open().then(() => {
+        _audioContext.open().then(() => {
             console.log("mic open");
             }).catch(e => {
             console.log("mic not open", e);
         });
     }
 
-    
-
     // create service that listens to trackCreated event and builds Recorder,Player,Effects
 
     return (
         <>
             <Recorder
-            audioCTX={getAU}
-            recorder={recorder}
-            actxTone={audioContext}/>
-
+            audioCTX={fetchAudioURL}
+            recorder={_recorder}
+            actxTone={_audioContext}/>
+          
             <Player 
-            actxTone={audioContext}
-            audioUrl={aU}/>
-
+            actxTone={_audioContext}
+            audioUrl={_audioURL}/>
+          
             <PingPong
-            actxTone={audioContext}
-            recorder={recorder}/>
-
+            actxTone={_audioContext}
+            recorder={_recorder}/>
+          
             <Reverb
-            actxTone={audioContext}
-            recorder={recorder}/>
+            actxTone={_audioContext}
+            recorder={_recorder}/>
         </>
 
             
