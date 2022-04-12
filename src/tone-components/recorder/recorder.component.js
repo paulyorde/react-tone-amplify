@@ -74,6 +74,7 @@ const Recorder = (props) => {
       <button id='button' onClick={_startRecording}>record</button>
       <button id='button-stop' onClick={_stopRecording}>stop</button>
      <br></br>
+     {/* TODO place in  AudioTracks - move AudioTracks to Components*/}
      {audioUrlList.map((v,index) => (
         <Player key={index} 
         actxTone={actxTone}
