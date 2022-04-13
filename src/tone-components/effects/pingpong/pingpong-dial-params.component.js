@@ -13,3 +13,20 @@
   //  {/* <button id='button-stop' onClick={_setPingPongRate}>delay--pong</button> */}
 
   //         {/* <input value={dt} onChange={this.handlPingPongChange} /> */}
+
+
+
+  
+// function PingPongDelayRate(props) {
+//   if (props.delayRate) {
+//     // const dt = pingPong.delayTime.value
+//     pingPong.delayTime.value = props.delayRate
+//     return <p>{props.delayRate}</p>
+//   }
+//   return pingPong.delayTime.value
+// }
+
+
+  {/* <PingPongDelayRate
+            delayRate={delayRate} /> */}
+

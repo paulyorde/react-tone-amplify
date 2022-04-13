@@ -1,11 +1,17 @@
-import { useEffect, useContext, useState } from "react";
+import { useState } from "react";
 import Player from "../player/player.component";
 import Recorder from "../recorder/recorder.component"
 import * as Tone from 'tone';
 import Reverb from '../../tone-components/effects/reverb/reverb.component';
 import PingPong from '../../tone-components/effects/pingpong/pingpont.component';
 
+/**
+ * 
+ * TODO track can have audioCtx and recorder lifted here similar to audioUrl to handle those states ??? 
+ */
+
 const Track = () => {
+    // tone component instance - keep track of single intance in state - each track has it's own instance 
 
     const [_audioURL, set_audioURL] = useState(null)
    
@@ -16,26 +22,9 @@ const Track = () => {
     const fetchAudioURL = (audioU) => {
         set_audioURL(audioU)
     }
-    
-    /**
-     * open mic on Track component initializtion 
-     */
-    useEffect(() => {
-        openAudioContext()
-    },[]) 
 
     const _recorder = new Tone.Recorder();
     const _audioContext = new Tone.UserMedia()
-
-    const openAudioContext = () => {
-        _audioContext.open().then(() => {
-            console.log("mic open");
-            }).catch(e => {
-            console.log("mic not open", e);
-        });
-    }
-
-    // create service that listens to trackCreated event and builds Recorder,Player,Effects
 
     return (
         <>

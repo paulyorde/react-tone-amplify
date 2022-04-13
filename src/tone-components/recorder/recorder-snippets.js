@@ -17,3 +17,13 @@
     
   //     console.log('recorder', worker)
   // })
+
+
+  // downloadAutio = () => {
+    // const anchor = document.createElement("a");
+    // anchor.download = "recording.webm";
+    // anchor.href = url;
+    // anchor.click();
+  // }
+
+

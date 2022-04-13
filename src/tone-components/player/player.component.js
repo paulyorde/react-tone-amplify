@@ -3,12 +3,15 @@ import * as Tone from 'tone';
 
 const Player = (props) => {
   const audioU = props.audioUrl
-
-  const player = new Tone.Player(audioU).toDestination();
-  player.autostart = false;
+  let player = null
  
   const _play = () => {
-    player.start()
+     player = new Tone.Player(audioU).toDestination();
+     player.autostart = false;
+     Tone.loaded().then((v) => {
+      player.start()
+      console.log('loaded::',v)
+     }).catch((e) => console.log('error loading Tone::',e))
   }
 
   const _stop = () => {
