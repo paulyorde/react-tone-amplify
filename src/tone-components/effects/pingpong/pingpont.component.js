@@ -1,8 +1,10 @@
 import * as Tone from 'tone';
 
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import AudioURLStateContext from '../../shared/audio-url-state-context';
 
 const PingPong = (props) => {
+  const trackContext = useContext(AudioURLStateContext)
 
   let pingPong = null
   const actxTone = props.actxTone

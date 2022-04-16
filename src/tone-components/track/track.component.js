@@ -16,7 +16,7 @@ import AudioURLStateContext from "../shared/audio-url-state-context";
 const Track = () => {
    
     const [_audioURL, set_audioURL] = useState(null)
-   
+
     /**
      * 
      * @param {fetch from Recorder onstop} audioU 
@@ -34,25 +34,25 @@ const Track = () => {
 
     return (
         <>
+            {/* pass state from this component to any compoent with useContext */}
            <AudioURLStateContext.Provider value={{
                axtTone: _audioContext,
                recorder: _recorder
            }}>
-            <div className="track">
-                <Recorder
-                audioCTX={fetchAudioURL} />
-            
-                <Player 
-                actxTone={_audioContext}
-                audioUrl={_audioURL}/>
-            
-                <PingPong
-                actxTone={_audioContext}
-                recorder={_recorder}/>
-            
-                <Reverb
-                actxTone={_audioContext}
-                recorder={_recorder}/>
+                <div className="track">
+                    <Recorder
+                    audioCTX={fetchAudioURL} />
+                
+                    <Player 
+                    audioUrl={_audioURL} />
+                
+                    <PingPong
+                    actxTone={_audioContext}
+                    recorder={_recorder}/>
+                
+                    <Reverb
+                    actxTone={_audioContext}
+                    recorder={_recorder}/>
                 </div>
            </AudioURLStateContext.Provider>
         </>
