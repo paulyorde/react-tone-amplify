@@ -1,9 +1,12 @@
 import { useState } from "react";
+
 import Player from "../player/player.component";
 import Recorder from "../recorder/recorder.component"
 import * as Tone from 'tone';
 import Reverb from '../../tone-components/effects/reverb/reverb.component';
 import PingPong from '../../tone-components/effects/pingpong/pingpont.component';
+
+import AudioURLStateContext from "../shared/audio-url-state-context";
 
 /**
  * 
@@ -11,8 +14,7 @@ import PingPong from '../../tone-components/effects/pingpong/pingpont.component'
  */
 
 const Track = () => {
-    // tone component instance - keep track of single intance in state - each track has it's own instance 
-
+   
     const [_audioURL, set_audioURL] = useState(null)
    
     /**
@@ -23,32 +25,37 @@ const Track = () => {
         set_audioURL(audioU)
     }
 
+    /**
+     * TODO new these on create track -stop audiocntext error ( user action needed )
+     * TODO tone component instance - keep track of single intance in state - each track has it's own instance 
+     */
     const _recorder = new Tone.Recorder();
     const _audioContext = new Tone.UserMedia()
 
     return (
         <>
+           <AudioURLStateContext.Provider value={{
+               axtTone: _audioContext,
+               recorder: _recorder
+           }}>
             <div className="track">
-            <Recorder
-            audioCTX={fetchAudioURL}
-            recorder={_recorder}
-            actxTone={_audioContext}/>
-          
-            <Player 
-            actxTone={_audioContext}
-            audioUrl={_audioURL}/>
-          
-            <PingPong
-            actxTone={_audioContext}
-            recorder={_recorder}/>
-          
-            <Reverb
-            actxTone={_audioContext}
-            recorder={_recorder}/>
-            </div>
-        </>
-
+                <Recorder
+                audioCTX={fetchAudioURL} />
             
+                <Player 
+                actxTone={_audioContext}
+                audioUrl={_audioURL}/>
+            
+                <PingPong
+                actxTone={_audioContext}
+                recorder={_recorder}/>
+            
+                <Reverb
+                actxTone={_audioContext}
+                recorder={_recorder}/>
+                </div>
+           </AudioURLStateContext.Provider>
+        </>
     )
 }
 

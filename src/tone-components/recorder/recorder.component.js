@@ -1,18 +1,20 @@
+import { useContext } from 'react';
 import * as Tone from 'tone';
+import AudioURLStateContext from '../shared/audio-url-state-context';
 // import { IoRadioButtonOn, IoStop } from "react-icons/io5";
 
 const Recorder = (props) => {
- 
-  const recorder = props.recorder;
-  const actxTone = props.actxTone;
+  const trackConext = useContext(AudioURLStateContext)
+
    /**
      *inject parent component function -Lift State Up- 
+     * @function audioURLOut
      */
   const audioURLOut = props.audioCTX;
   let synth = null
 
   const openAudioContext = () => {
-    actxTone.open().then(() => {
+      trackConext.axtTone.open().then(() => {
       console.log("mic open");
       }).catch(e => {
       console.log("mic not open", e);
@@ -26,13 +28,13 @@ const Recorder = (props) => {
    
     openAudioContext()
     await Tone.start()
-    actxTone.connect(recorder)
+    trackConext.axtTone.connect(trackConext.recorder)
 
-    recorder.start()
+    trackConext.recorder.start()
   };
 
   const _stopRecording = async () => {
-    const recording = await recorder.stop();
+    const recording = await trackConext.recorder.stop();
     const url = URL.createObjectURL(recording);
    
     audioURLOut(url)
