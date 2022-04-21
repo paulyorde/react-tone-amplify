@@ -34,9 +34,8 @@ const Player = (props) => {
       <div>
       <button id='button' onClick={_play}>play</button>
       <button id='button-stop' onClick={_stop}>stop</button>
-      <button id='button' onClick={_ff}>ff</button>
-      </div>
       <br></br>
+      </div>
     </>
   )
 
