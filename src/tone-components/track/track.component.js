@@ -42,10 +42,7 @@ const Track = () => {
                 <div className="track">
                     <Recorder
                     audioCTX={fetchAudioURL} />
-                
-                    <Player 
-                    audioUrl={_audioURL} />
-                
+
                     <PingPong
                     actxTone={_audioContext}
                     recorder={_recorder}/>
@@ -53,6 +50,11 @@ const Track = () => {
                     <Reverb
                     actxTone={_audioContext}
                     recorder={_recorder}/>
+                
+                    <Player 
+                    audioUrl={_audioURL} />
+                
+                  
                 </div>
            </AudioURLStateContext.Provider>
         </>

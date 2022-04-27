@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import { IoOptionsOutline } from "react-icons/io5";
 
 const Reverb = (props) => {
   
@@ -26,8 +27,8 @@ const Reverb = (props) => {
   return (
     <>
       <div>
-        <button id='button-stop' onClick={_connectReverb}>reverb</button>
-        <button id='button-stop' onClick={_disconnectReverb}>stop--reverb</button>
+        <button className='reverb-start tooltip' id='button-stop' onClick={_connectReverb} ><IoOptionsOutline/><span className='tooltiptext'>reverb</span></button>
+        <button className='reverb-stop' id='button-stop' onClick={_disconnectReverb}><IoOptionsOutline/><span className='tooltiptext'></span></button>
       </div>
     </>
   )

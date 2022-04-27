@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import { IoOptionsOutline } from "react-icons/io5";
 
 import { useContext, useEffect } from 'react';
 import AudioURLStateContext from '../../shared/audio-url-state-context';
@@ -32,8 +33,8 @@ const PingPong = (props) => {
   return (
     <>
       <div>
-        <button id='button-stop' onClick={_connectPingPong}>ping--pong</button>
-        <button id='button-stop' onClick={_disconnectPingPong}>stop--pong</button>
+        <button className='pong-start' id='button-stop' onClick={_connectPingPong}><IoOptionsOutline/></button>
+        <button className='pong-stop' id='pong-stop' onClick={_disconnectPingPong}><IoOptionsOutline/></button>
       </div>
     </>
   )
