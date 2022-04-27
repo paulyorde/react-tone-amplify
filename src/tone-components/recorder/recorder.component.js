@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import * as Tone from 'tone';
 import AudioURLStateContext from '../shared/audio-url-state-context';
-// import { IoRadioButtonOn, IoStop } from "react-icons/io5";
+import { IoRadioButtonOn, IoStop } from "react-icons/io5";
 
 const Recorder = (props) => {
   const trackConext = useContext(AudioURLStateContext)
@@ -43,8 +43,8 @@ const Recorder = (props) => {
   return (
     <>
       <div>
-        <button id='button' onClick={_startRecording}>record</button>
-        <button id='button-stop' onClick={_stopRecording}>stop</button>
+        <button className='button_record-start' id='button' onClick={_startRecording}><IoRadioButtonOn/></button>
+        <button className='button_record-stop' id='button-stop' onClick={_stopRecording}><IoStop/></button>
       </div>
     </>
   )

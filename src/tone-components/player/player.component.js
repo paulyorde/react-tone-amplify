@@ -38,9 +38,11 @@ const Player = (props) => {
   return (
     <>
       <div>
-      <button id='button' onClick={_play}>play</button>
+      <audio src={audioU} controls controlsList='' />
+
+      {/* <button id='button' onClick={_play}>play</button>
       <button id='button-stop' onClick={_stop}>stop</button>
-      <button id='button-stop' onClick={_ff}>ff</button>
+      <button id='button-stop' onClick={_ff}>ff</button> */}
       </div>
       <br></br>
     </>
