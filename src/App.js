@@ -14,8 +14,9 @@ const App = () => {
     <>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div id='wrapper'>
+         <div> <img src={logo} className="App-logo" alt="logo" /></div>
          {/* <div><button id='button' onClick={createTrack}>create track</button></div> */}
          <Track />
          <Track />
