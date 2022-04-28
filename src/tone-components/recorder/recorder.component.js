@@ -43,8 +43,8 @@ const Recorder = (props) => {
   return (
     <>
       <div>
-        <button className='button_record-start' id='button' onClick={_startRecording}><IoRadioButtonOn/></button>
-        <button className='button_record-stop' id='button-stop' onClick={_stopRecording}><IoStop/></button>
+        <button className='button_record-start tooltip' id='button-start-recording' onClick={_startRecording}><IoRadioButtonOn/><span className='tooltiptext'>start recording</span></button>
+        <button className='button_record-stop tooltip' id='button-stop-recording' onClick={_stopRecording}><IoStop/><span className='tooltiptext'>stop recording</span></button>
       </div>
     </>
   )

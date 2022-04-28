@@ -37,14 +37,10 @@ const Player = (props) => {
 
   return (
     <>
-      <div>
-      <audio src={audioU} controls controlsList='' />
-
-      {/* <button id='button' onClick={_play}>play</button>
-      <button id='button-stop' onClick={_stop}>stop</button>
-      <button id='button-stop' onClick={_ff}>ff</button> */}
+      <div className='tooltip'>
+        <span className='tooltiptext'>play</span>
+        <audio src={audioU} controls></audio>
       </div>
-      <br></br>
     </>
   )
 

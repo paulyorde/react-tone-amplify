@@ -27,8 +27,8 @@ const Reverb = (props) => {
   return (
     <>
       <div>
-        <button className='reverb-start tooltip' id='button-stop' onClick={_connectReverb} ><IoOptionsOutline/><span className='tooltiptext'>reverb</span></button>
-        <button className='reverb-stop' id='button-stop' onClick={_disconnectReverb}><IoOptionsOutline/><span className='tooltiptext'></span></button>
+        <button className='reverb-start tooltip' id='button-start-reverb' onClick={_connectReverb} ><IoOptionsOutline/><span className='tooltiptext'>start reverb</span></button>
+        <button className='reverb-stop tooltip' id='button-stop-reverb' onClick={_disconnectReverb}><IoOptionsOutline/><span className='tooltiptext'>stop reverb</span></button>
       </div>
     </>
   )

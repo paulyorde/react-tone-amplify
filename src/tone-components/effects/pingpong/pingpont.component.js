@@ -33,8 +33,8 @@ const PingPong = (props) => {
   return (
     <>
       <div>
-        <button className='pong-start' id='button-stop' onClick={_connectPingPong}><IoOptionsOutline/></button>
-        <button className='pong-stop' id='pong-stop' onClick={_disconnectPingPong}><IoOptionsOutline/></button>
+        <button className='pong-start tooltip' id='button-stop' onClick={_connectPingPong}><IoOptionsOutline/><span className='tooltiptext'>start ping-pong</span></button>
+        <button className='pong-stop tooltip' id='pong-stop' onClick={_disconnectPingPong}><IoOptionsOutline/><span className='tooltiptext'>stop ping-pong</span></button>
       </div>
     </>
   )
