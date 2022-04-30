@@ -1,10 +1,15 @@
+import Track from './tone-components/track/track.component';
+// import PingPong from './tone-components/effects/pingpong/pingpont.component';
+
 import logo from './logo.svg';
 import './App.css';
+// import { IoOptionsOutline } from "react-icons/io5";
+
 import React, { useState } from 'react';
-import Track from './tone-components/track/track.component';
 
 const App = () => {
   let [getTrack, setTrack] = useState([])
+  // let [effects, setEffects] = useState(null)
   let [trackKey, setTrackKey] = useState(0)
 
   const createTrack = () => {
@@ -13,6 +18,10 @@ const App = () => {
     const newTrack = [...getTrack, <Track key={trackKey}/>]
     setTrack(newTrack)
   }
+
+  // const openEffects = () => {
+  //   setEffects(<PingPong key={0} />)
+  // }
  
   return (
     <>
@@ -20,6 +29,9 @@ const App = () => {
       <header className="App-header">
         <div id='wrapper'>
          <div> <img src={logo} className="App-logo" alt="logo" /></div>
+          {/* {effects}
+          <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
+
           <Track key={trackKey}/>
 
           {getTrack}

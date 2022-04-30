@@ -1,16 +1,19 @@
-import { useState } from "react";
-
 import Player from "../player/player.component";
 import Recorder from "../recorder/recorder.component"
 import * as Tone from 'tone';
 import Reverb from '../../tone-components/effects/reverb/reverb.component';
 import PingPong from '../../tone-components/effects/pingpong/pingpont.component';
 
+import { IoOptionsOutline } from "react-icons/io5";
+
 import AudioURLStateContext from "../shared/audio-url-state-context";
+import { useState } from "react";
 
 const Track = () => {
    
     const [_audioURL, set_audioURL] = useState(null)
+    let [effects, setEffects] = useState(null)
+    let [trackKey, setTrackKey] = useState(0)
 
     /**
      * 
@@ -30,6 +33,13 @@ const Track = () => {
     const options = {debug: true, delayTime: "4n", feedBack: .04}
     const _pingPong =  new Tone.PingPongDelay({options})
 
+
+    const openEffects = () => {
+        const  keyCounter = trackKey + 1
+        setTrackKey(keyCounter)
+        setEffects(<PingPong key={keyCounter} />)
+      }
+
     return (
         <>
             {/* pass state from this component to any compoent with useContext */}
@@ -43,9 +53,14 @@ const Track = () => {
                     <Recorder
                     audioCTX={fetchAudioURL} />
 
-                    <PingPong />
+                    <div className="effectSoundBox">
+                         {/* <PingPong /> */}
+                    {effects}
                 
-                    <Reverb />
+                    </div>
+                    <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button>
+
+                    {/* <Reverb />  */}
                 
                     <Player 
                     audioUrl={_audioURL} />

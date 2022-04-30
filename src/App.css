@@ -50,6 +50,12 @@
     padding: 10px;
 }
 
+.effectSoundBox {
+  position: absolute;
+    top: 10%;
+    left: 46%;
+}
+
 /* Tooltip container */
 .tooltip {
   position: relative;
