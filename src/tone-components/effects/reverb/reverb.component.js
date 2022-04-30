@@ -1,27 +1,21 @@
-import * as Tone from 'tone';
 import { IoOptionsOutline } from "react-icons/io5";
 
-const Reverb = (props) => {
-  
-  const actxTone = props.actxTone
-  const recorder = props.recorder
-  let reverb = null
+import { useContext } from 'react';
+import AudioURLStateContext from '../../shared/audio-url-state-context';
+
+const Reverb = () => {
+  const trackConext = useContext(AudioURLStateContext)
 
   const _connectReverb = () => {
-    reverb = new Tone.Reverb(
-    {
-      "wet": 1,
-      "decay": 1.9,
-      "preDelay": 1.00
-    })
-    reverb.connect(recorder)
-    reverb.toDestination()
-    actxTone.connect(reverb);
+    trackConext.axtTone.connect(trackConext.reverb)
+    // isRecording Event Present? then -> connect :: for separating reverb specific to track to enable effect w/o recording and on mixing
+    trackConext.reverb.connect(trackConext.recorder)
+    trackConext.reverb.toDestination()
   }
 
   const _disconnectReverb = async () => {
-    await actxTone.disconnect(reverb);
-    reverb.disconnect(recorder)
+    trackConext.reverb.disconnect(trackConext.recorder)
+    await trackConext.axtTone.disconnect(trackConext.reverb)
   }
 
   return (

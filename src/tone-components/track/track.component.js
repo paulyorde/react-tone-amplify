@@ -8,11 +8,6 @@ import PingPong from '../../tone-components/effects/pingpong/pingpont.component'
 
 import AudioURLStateContext from "../shared/audio-url-state-context";
 
-/**
- * 
- * TODO track can have audioCtx and recorder lifted here similar to audioUrl to handle those states ??? 
- */
-
 const Track = () => {
    
     const [_audioURL, set_audioURL] = useState(null)
@@ -31,25 +26,26 @@ const Track = () => {
      */
     const _recorder = new Tone.Recorder();
     const _audioContext = new Tone.UserMedia()
+    const _reverb = new Tone.Reverb({"wet": 1,"decay": 1.9,"preDelay": 1.00})
+    const options = {debug: true, delayTime: "4n", feedBack: .04}
+    const _pingPong =  new Tone.PingPongDelay({options})
 
     return (
         <>
             {/* pass state from this component to any compoent with useContext */}
            <AudioURLStateContext.Provider value={{
                axtTone: _audioContext,
-               recorder: _recorder
+               recorder: _recorder,
+               reverb: _reverb,
+               pingPong: _pingPong
            }}>
                 <div className="track">
                     <Recorder
                     audioCTX={fetchAudioURL} />
 
-                    <PingPong
-                    actxTone={_audioContext}
-                    recorder={_recorder}/>
+                    <PingPong />
                 
-                    <Reverb
-                    actxTone={_audioContext}
-                    recorder={_recorder}/>
+                    <Reverb />
                 
                     <Player 
                     audioUrl={_audioURL} />
