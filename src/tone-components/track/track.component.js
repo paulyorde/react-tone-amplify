@@ -32,11 +32,12 @@ const Track = () => {
     const _reverb = new Tone.Reverb({"wet": 1,"decay": 1.9,"preDelay": 1.00})
     const options = {debug: true, delayTime: "4n", feedBack: .04}
     const _pingPong =  new Tone.PingPongDelay({options})
-
+    {/* pass trackkey=#  to recorder / effects to display */}
 
     const openEffects = () => {
         const  keyCounter = trackKey + 1
         setTrackKey(keyCounter)
+        // const ping = [...effects, <PingPong key={keyCounter} /> ]
         setEffects(<PingPong key={keyCounter} />)
       }
 
@@ -58,7 +59,7 @@ const Track = () => {
                     {effects}
                 
                     </div>
-                    <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button>
+                    <button onClick={openEffects} className='pong tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button>
 
                     {/* <Reverb />  */}
                 

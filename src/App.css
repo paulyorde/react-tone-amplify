@@ -35,7 +35,7 @@
   align-items: center;
 }
 
-.button_record-start, .button_record-stop, .reverb-start, .reverb-stop, .pong-start, .pong-stop {
+.button_record-start, .button_record-stop, .reverb-start, .reverb-stop, .pong-start, .pong-stop, .pong {
   border-radius: 100%;
   width: 50px;
   height: 50px;
@@ -47,13 +47,13 @@
 
 .track {
   display: flex;
-    padding: 10px;
+  padding: 10px;
 }
 
 .effectSoundBox {
   position: absolute;
-    top: 10%;
-    left: 46%;
+  top: 16%;
+  left: 46%;
 }
 
 /* Tooltip container */

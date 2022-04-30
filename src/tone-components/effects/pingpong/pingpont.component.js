@@ -23,6 +23,7 @@ const PingPong = (props) => {
   return (
     <>
       <div>
+        <p>pingpong</p>
         <button className='pong-start tooltip' id='button-stop' onClick={_connectPingPong}><IoOptionsOutline/><span className='tooltiptext'>start ping-pong</span></button>
         <button className='pong-stop tooltip' id='pong-stop' onClick={_disconnectPingPong}><IoOptionsOutline/><span className='tooltiptext'>stop ping-pong</span></button>
       </div>
