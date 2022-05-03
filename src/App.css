@@ -50,7 +50,9 @@
   padding: 10px;
 }
 
-.effectSoundBox {
+
+
+.effectSoundBox, .effect-box {
   position: absolute;
   top: 16%;
   left: 46%;
