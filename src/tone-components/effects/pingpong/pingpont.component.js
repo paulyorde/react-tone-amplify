@@ -5,7 +5,7 @@ import { IoOptionsOutline } from "react-icons/io5";
 import { useContext } from 'react';
 
 
-const PingPong = (props) => {
+const PingPong = () => {
   const trackContext = useContext(AudioURLStateContext)
 
   const _connectPingPong = () => {

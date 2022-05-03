@@ -44,15 +44,17 @@ const Track = () => {
     return (
         <>
             {/* pass state from this component to any compoent with useContext */}
-           <AudioURLStateContext.Provider value={{
+           {/* <AudioURLStateContext.Provider value={{
                axtTone: _audioContext,
                recorder: _recorder,
                reverb: _reverb,
                pingPong: _pingPong
-           }}>
+           }}> */}
                 <div className="track">
-                    <Recorder
-                    audioCTX={fetchAudioURL} />
+                    {/* <Recorder
+                    audioCTX={fetchAudioURL} /> */}
+                     <Recorder
+                     />
 
                     <div className="effectSoundBox">
                          {/* <PingPong /> */}
@@ -63,12 +65,14 @@ const Track = () => {
 
                     {/* <Reverb />  */}
                 
-                    <Player 
-                    audioUrl={_audioURL} />
+                    {/* <Player 
+                    audioUrl={_audioURL} /> */}
+                     <Player 
+                    />
                 
                   
                 </div>
-           </AudioURLStateContext.Provider>
+           {/* </AudioURLStateContext.Provider> */}
         </>
     )
 }

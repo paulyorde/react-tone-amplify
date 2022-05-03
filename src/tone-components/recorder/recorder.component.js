@@ -3,7 +3,7 @@ import * as Tone from 'tone';
 
 import { IoRadioButtonOn, IoStop } from "react-icons/io5";
 
-import AudioURLStateContext from '../shared/audio-url-state-context';
+import AudioURLStateContext, { AudioProvider } from '../shared/audio-url-state-context';
 import { useContext } from 'react';
 
 const Recorder = (props) => {
@@ -31,7 +31,8 @@ const Recorder = (props) => {
   const _stopRecording = async () => {
     const recording = await trackConext.recorder.stop();
     const url = URL.createObjectURL(recording);
-    audioURLOut(url)
+    trackConext.audioTrackCTX(url)
+    // audioURLOut(url)
 
    
       console.log('disconnect record start')

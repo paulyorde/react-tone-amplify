@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AudioProvider } from './tone-components/shared/audio-url-state-context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AudioProvider><App /></AudioProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
