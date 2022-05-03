@@ -51,11 +51,13 @@
 }
 
 
-
-.effectSoundBox, .effect-box {
+.effect-box {
   position: absolute;
   top: 16%;
   left: 46%;
+  background: blue;
+  width: 25%;
+  height: 25%;
 }
 
 /* Tooltip container */
