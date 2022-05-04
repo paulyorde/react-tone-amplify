@@ -6,8 +6,8 @@ import { IoOptionsOutline } from "react-icons/io5";
 
 const EffectBox = () => {
 
-    let [getEffects, setEffects] = useState([])
-    let [trackKey, setTrackKey] = useState(0)
+    // let [getEffects, setEffects] = useState([])
+    // let [trackKey, setTrackKey] = useState(0)
     /** build effects component */
     // const openEffects = () => {
     //     const  keyCounter = trackKey + 1
@@ -15,20 +15,29 @@ const EffectBox = () => {
     //     setEffects(<PingPong key={keyCounter} />)
     //   }
 
-    const openEffects = () => {
-        setTrackKey(trackKey + 1)
-        const newEffect = [<PingPong key={trackKey} />]
-        setEffects(newEffect)
-      }
+    // const openEffects = () => {
+    //     setTrackKey(trackKey + 1)
+    //     const newEffect = [<PingPong key={trackKey} />]
+    //     setEffects(newEffect)
+    //   }
+
+    let [showEffectBox, setShowEffectBox] = useState('')
+
+    const toggleEffects = () => {
+        setShowEffectBox(showEffectBox = !showEffectBox)
+    }
 
     return (
         <>
         <div className="effect-box">
             {/* list of effects */}
             {/* show hide effects -> effect params within effect */} 
-            {getEffects}
+            {showEffectBox ? <PingPong className=""/> : null}
+
+
+            {/* {getEffects} */}
             <button 
-                onClick={openEffects} 
+                onClick={toggleEffects} 
                 className='pong tooltip'><IoOptionsOutline/>
                 <span className='tooltiptext'>open effects</span>
             </button>
