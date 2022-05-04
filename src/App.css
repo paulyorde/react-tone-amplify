@@ -60,6 +60,10 @@
   height: 25%;
 }
 
+.effect-close {
+  display: none;
+}
+
 /* Tooltip container */
 .tooltip {
   position: relative;

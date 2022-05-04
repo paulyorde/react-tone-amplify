@@ -22,17 +22,32 @@ const Track = () => {
 
       const openEffects = () => {
         const  keyCounter = trackKey + 1
-        const newEffect = [...getEffects, <EffectBox />]
+        const newEffect = [<EffectBox />]
         setEffects(newEffect)
       }
+
+      let [showEffectBox, setShowEffectBox] = useState('')
+
+      const toggleEffects = () => {
+          // hide div
+          // showEffectBox = !showEffectBox
+          setShowEffectBox(showEffectBox = !showEffectBox)
+      }
+
+    //   const closeEffects = () => {
+
+    //   }
 
     return (
         <>
             <div className="track">
                 <Recorder />
 
-                {getEffects}
-                <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button>
+                {/* {getEffects}
+                <button onClick={openEffects} className='pong tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span>---</button> */}
+                <button onClick={toggleEffects} className="effect-close pong tooltip"><IoOptionsOutline/></button>
+                {showEffectBox ? <EffectBox /> : null}
+                {/* <button onClick={closeEffects} className="effect-close">-</button> */}
 
                 {/* Replace with <Effects />
                 <div className="effectSoundBox">
