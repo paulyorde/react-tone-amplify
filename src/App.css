@@ -35,6 +35,10 @@
   align-items: center;
 }
 
+.logo-box {
+  margin-bottom: 10%;
+}
+
 .button_record-start, .button_record-stop, .reverb-start, .reverb-stop, .pong-start, .pong-stop, .pong {
   border-radius: 100%;
   width: 50px;
@@ -53,11 +57,15 @@
 
 .effect-box {
   position: absolute;
-  top: 16%;
-  left: 46%;
-  background: blue;
+  top: 25%;
+  left: 39%;
+  background: #2c313a87;
   width: 25%;
   height: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: self-end;
+  justify-content: center;
 }
 
 .effect-close {

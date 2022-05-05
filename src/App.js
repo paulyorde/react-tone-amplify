@@ -32,7 +32,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <div id='wrapper'>
-          <div><img src={logo} className="App-logo" alt="logo" /></div>
+          <div className='logo-box'><img src={logo} className="App-logo" alt="logo" /></div>
 
           {/* {getEffects}
           <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
