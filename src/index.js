@@ -8,6 +8,7 @@ import { AudioProvider } from './tone-components/shared/audio-url-state-context'
 ReactDOM.render(
   <React.StrictMode>
     <AudioProvider><App /></AudioProvider>
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

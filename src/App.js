@@ -4,14 +4,14 @@ import Track from './tone-components/track/track.component';
 
 import logo from './logo.svg';
 import './App.css';
-import { IoOptionsOutline } from "react-icons/io5";
+// import { IoOptionsOutline } from "react-icons/io5";
 
 import React, { useState } from 'react';
+// import { AudioProvider } from './tone-components/shared/audio-url-state-context';
 
 
 const App = () => {
   let [getTrack, setTrack] = useState([])
-  let [getEffects, setEffects] = useState([])
   let [trackKey, setTrackKey] = useState(0)
 
   const createTrack = () => {
@@ -21,12 +21,6 @@ const App = () => {
     setTrack(newTrack)
   }
 
-  // const openEffects = () => {
-  //   const  keyCounter = trackKey + 1
-  //   const newEffect = [...getEffects, <EffectBox />]
-  //   setEffects(newEffect)
-  // }
- 
   return (
     <>
     <div className="App">
@@ -38,6 +32,7 @@ const App = () => {
           <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
 
           <Track key={trackKey}/>
+          {/* <AudioProvider><Track key={trackKey}/></AudioProvider> */}
 
           {getTrack}
           <button className='tooltip' onClick={createTrack}>+<span className='tooltiptext'>add track</span></button>

@@ -4,9 +4,17 @@ import EffectBox from '../../tone-components/effects/effect-box';
 
 import { IoOptionsOutline } from "react-icons/io5";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+
+// import * as Tone from 'tone';
+// import Reverb from '../../tone-components/effects/reverb/reverb.component';
+// import PingPong from '../../tone-components/effects/pingpong/pingpont.component';
+// import AudioURLStateContext from "../shared/audio-url-state-context";
 
 const Track = () => {
+    // useContext -set audio context provider with 
+    // const trackContext = useContext(AudioURLStateContext)
 
     let [showEffectBox, setShowEffectBox] = useState('')
 
@@ -14,22 +22,26 @@ const Track = () => {
         setShowEffectBox(showEffectBox = !showEffectBox)
     }
 
+
+
+     // useContext -set audio context provider with 
+    // const _recorder = new Tone.Recorder();
+    // const _audioContext = new Tone.UserMedia()
+    // const _reverb = new Tone.Reverb({"wet": 1,"decay": 1.9,"preDelay": 1.00})
+    // const options = {debug: true, delayTime: "4n", feedBack: .04}
+    // const _pingPong =  new Tone.PingPongDelay({options})
+
     return (
         <>
         <div className="track">
+
             <Recorder />
             
             <button onClick={toggleEffects} className="pong tooltip"><IoOptionsOutline/></button>
             {showEffectBox ? <EffectBox className="effect-box"/> : null}
             
-
-            {/* Replace with <Effects />
-            <div className="effectSoundBox">
-                {effects}
-            </div> */}
-            {/* <button onClick={openEffects} className='pong tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
-            
             <Player />
+
         </div>
         </>
     )

@@ -1,8 +1,4 @@
-import Player from "../player/player.component";
-import Recorder from "../recorder/recorder.component"
 import * as Tone from 'tone';
-import Reverb from '../../tone-components/effects/reverb/reverb.component';
-import PingPong from '../../tone-components/effects/pingpong/pingpont.component';
 
 import React, {useState} from "react";
 
@@ -16,10 +12,8 @@ const AudioURLStateContext = React.createContext({
 })
 
 export const AudioProvider = (props) => {
-    // useState()
     const [_audioURL, set_audioURL] = useState(null)
-    // let [effects, setEffects] = useState(null)
-    // let [trackKey, setTrackKey] = useState(0)
+    // const [recorder, setRecorder] = useState(null)
 
     const fetchAudioURL = (audioU) => {
         set_audioURL(audioU)
