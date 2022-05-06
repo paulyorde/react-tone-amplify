@@ -12,7 +12,7 @@ const Recorder = () => {
 
   const _startRecording = async () => {
     synth = new Tone.MembraneSynth().toDestination();
-    synth.volume.value = .0011;
+    synth.volume.value = .1;
     synth.triggerAttackRelease("C1", "16n");
    
     startDeviceAudioInputStream()

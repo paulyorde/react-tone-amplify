@@ -3,6 +3,14 @@ import PingPong from "./pingpong/pingpont.component";
 
 import { IoOptionsOutline } from "react-icons/io5";
 
+/**
+ * 
+ * @Effectbox 
+ * @effets delay, chorus, dis, reverb
+ * @effectparamters wet/dry timedelay
+ * per track / global 
+ */
+
 
 const EffectBox = () => {
 
