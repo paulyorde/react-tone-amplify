@@ -40,7 +40,7 @@ const Track = () => {
             <button onClick={toggleEffects} className="pong tooltip"><IoOptionsOutline/></button>
             {showEffectBox ? <EffectBox className="effect-box"/> : null}
             
-            <Player />
+            {/* <Player /> */}
 
         </div>
         </>

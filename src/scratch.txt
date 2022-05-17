@@ -1,0 +1,16 @@
+<div className="App">
+<header className="App-header">
+  <div id='wrapper'>
+    <div className='logo-box'><img src={logo} className="App-logo" alt="logo" /></div>
+
+    {/* {getEffects}
+    <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
+
+    <Track key={trackKey}/>
+    {/* <AudioProvider><Track key={trackKey}/></AudioProvider> */}
+
+    {getTrack}
+    <button className='tooltip' onClick={createTrack}>+<span className='tooltiptext'>add track</span></button>
+  </div>
+</header>
+</div>
