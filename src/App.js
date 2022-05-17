@@ -7,7 +7,7 @@ import './App.css';
 // import { IoOptionsOutline } from "react-icons/io5";
 
 import React, { useState } from 'react';
-// import { AudioProvider } from './tone-components/shared/audio-url-state-context';
+import { AudioProvider } from './tone-components/shared/audio-url-state-context';
 
 
 const App = () => {
@@ -31,11 +31,11 @@ const App = () => {
           {/* {getEffects}
           <button onClick={openEffects} className='tooltip'><IoOptionsOutline/><span className='tooltiptext'>open effects</span></button> */}
 
-          <Track key={trackKey}/>
-          {/* <AudioProvider><Track key={trackKey}/></AudioProvider> */}
+          {/* <Track key={trackKey}/> */}
+          <AudioProvider><Track key={trackKey}/></AudioProvider>
 
-          {getTrack}
-          <button className='tooltip' onClick={createTrack}>+<span className='tooltiptext'>add track</span></button>
+          {/* {getTrack}
+          <button className='tooltip' onClick={createTrack}>+<span className='tooltiptext'>add track</span></button> */}
         </div>
       </header>
     </div>
